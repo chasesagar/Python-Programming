@@ -1,3 +1,7 @@
+''' Status
+    Still Uncomplete 
+'''
+
 # code
 class Node:
     def __init__(self,data):
@@ -42,17 +46,17 @@ class DoublyLinkedList:
         temp = self.head
         print(temp.data)
         return temp
-
+    #uncomplete 
     def QuickSort(self,low,high):
-        pi = self.Partition(low,high)
+        pi = self.Partition(low,high) # works 
 
-        print(pi.prev.data)
+        print(pi.prev.data) # works, just for debugging purpose
         
-        return self.QuickSort(low,pi)
-        #self.QuickSort(pi.next,high)
+        self.QuickSort(low,pi) # Not working end up having an infinite loop.
+        self.QuickSort(pi.next,high) #  commenting this section give problem in partition section > pivot for upper call.
 
     def Partition(self,low,high):
-        pivot = high.data
+        pivot = high.data # error high.data has no variable called Data.
         pindex = low
         temp = low
 
@@ -64,11 +68,8 @@ class DoublyLinkedList:
         pindex.data,high.data = high.data,pindex.data
 
         return pindex
-        
-
-
+    
 # driver
-
 if(__name__=="__main__"):
     arr = [8,2,3,1,7]
     dlist = DoublyLinkedList()
@@ -79,64 +80,3 @@ if(__name__=="__main__"):
     high = dlist.gethighestnode()
     dlist.QuickSort(low,high)
     dlist.PrintList()
-
-
-
-class SortLinkedList:
-    def __init__(self):
-        return
-
-    def quickSortUtil(self, head):
-        pivot = head
-
-        if head is None or head.next is None:
-            return head, head, head
-
-        head = head.next
-        pivot.next = None
-
-itr = head
-prev = None
-less_than_pivot = head
-last_of_less_than_pivot = None
-
-while itr is not None:
-if itr.data < pivot.data:
-if itr is less_than_pivot or prev is None:
-last_of_less_than_pivot = less_than_pivot
-else:
-prev.next = itr.next
-itr.next = less_than_pivot
-less_than_pivot = itr
-itr = prev
-
-if last_of_less_than_pivot is None:
-last_of_less_than_pivot = less_than_pivot
-
-prev = itr
-itr = itr.next
-
-listA = less_than_pivot
-listB = last_of_less_than_pivot.next
-last_of_less_than_pivot.next = None
-
-return listA, listB, pivot
-
-def quickSort(self, head):
-if head is not None and head.next is not None:
-
-listA, listB, pivot = self.quickSortUtil(head)
-
-listA = self.quickSort(listA)
-listB = self.quickSort(listB)
-
-temp = listA
-while temp.next is not None:
-temp = temp.next
-
-temp.next = pivot
-pivot.next = listB
-
-return listA
-else:
-return head
