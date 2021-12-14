@@ -10,6 +10,7 @@ class LinkedList:
 
     def Push(self,new_data):
         if(self.head)==None:
+            
             self.head = Node(new_data)
         else:
             new_node = Node(new_data)
