@@ -34,7 +34,7 @@ class Conversion:
     # A utility function to check if the given character 
     # is operand
     def isOperand(self, ch):
-        return ch.isalpha()
+        return ch.isalpha() or ch.isnumeric()
 
     # Method to check if the precedence of the operator is 
     # strictly less than top of the stack
