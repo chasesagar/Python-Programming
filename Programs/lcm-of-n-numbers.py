@@ -7,7 +7,7 @@ class Program:
 
     def calculate_lcm_using_brute_force(self):
         """
-            
+        In this method, the multiples of each number are listed until the first common multiple is found.
         """
         if not self.numbers or type(self.numbers) is int or len(self.numbers) < 2:
             return -1
