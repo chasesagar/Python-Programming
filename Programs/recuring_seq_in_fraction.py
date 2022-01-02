@@ -1,6 +1,4 @@
 # A program to find recuring sequence in a fraction
-
-
 class BasicMath:
     def __init__(self, numerator, denominator):
         self.numerator = numerator
@@ -18,7 +16,6 @@ class BasicMath:
             # Updating result after division
             res_part = rem // self.denominator
             res = res + str(res_part)
-
             # update reminder
             rem = rem % self.denominator
 
@@ -28,9 +25,7 @@ class BasicMath:
             return f"{self.numerator // self.denominator}.({res[mp[rem]:]})"
 
 
-# Driver
 # Driver code
 s = BasicMath(50, 22)
 res = s.fraction_to_decimal()
 print("Fraction to decimal with recuring sequence is: ", res)
-
