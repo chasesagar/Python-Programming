@@ -48,7 +48,7 @@ class Program:
     def calculate_lcm_of_two_numbers(self, n1, n2):
         """
         A utility function provide lcm of two provide numbers
-        using the GCF or GCD methos
+        using the GCF or GCD methods
         """
         lcm = int(int(n1 * n2) / int(self.calculate_gcd(n1, n2)))
         return lcm
