@@ -40,6 +40,13 @@ class ArrayRotation:
         return arr
 
     def array_rotation_using_reversal_algorithm(self):
+        """
+        [Method 3: Array rotation using reversal algorithm]
+        Time complexity : O(n)
+        Auxiliary Space : O(1)
+        Returns:
+            [list]: [A list of rotated array]
+        """
         arr = self.arr.copy()
 
         # In case d is zero condition handler
@@ -51,6 +58,28 @@ class ArrayRotation:
         self._reverse_array(arr, 0, d - 1)
         self._reverse_array(arr, d, self.n - 1)
         self._reverse_array(arr, 0, self.n - 1)
+
+        return arr
+
+    def array_rotation_using_reversal_recursion_algorithm(self):
+        """
+        [Method 4: Array rotation using reversal recursion algorithm]
+        Time complexity : O(n)
+        Auxiliary Space : O(1)
+        Returns:
+            [list]: [A list of rotated array]
+        """
+        arr = self.arr.copy()
+
+        # In case d is zero condition handler
+        if self.d == 0:
+            return -1
+        # In case rotating factor is greater than length of array
+        d = self.d % self.n
+
+        self._reverse_array_recursion(arr, 0, d - 1)
+        self._reverse_array_recursion(arr, d, self.n - 1)
+        self._reverse_array_recursion(arr, 0, self.n - 1)
 
         return arr
 
@@ -71,6 +100,15 @@ class ArrayRotation:
             start += 1
             end -= 1
 
+    def _reverse_array_recursion(self, arr, start, end):
+        if start >= end:
+            return 
+        temp = arr[start]
+        arr[start] = arr[end]
+        arr[end] = temp
+
+        self._reverse_array_recursion(arr, start+1, end -1)
+
 
 # Driver
 arr = [1, 2, 3, 4, 5, 6, 7]
@@ -85,4 +123,8 @@ print(
 print(
     f"Clockwise array rotation by {d} elements using reversal algorithm is: "
     f"{s.array_rotation_using_reversal_algorithm()}"
+)
+print(
+    f"Clockwise array rotation by {d} elements using reversal recursion algorithm is: "
+    f"{s.array_rotation_using_reversal_recursion_algorithm()}"
 )
