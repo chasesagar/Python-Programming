@@ -5,6 +5,7 @@ majority element in an array A[] of size n is an element that appears more than 
 (and hence there is at most one such element).
 """
 
+
 class ArrayBasic:
     def __init__(self, arr, n):
         self.arr = arr
@@ -20,10 +21,10 @@ class ArrayBasic:
         """
         temp = {}
         for i in self.arr:
-            temp[i] = 0  if temp.get(i) == None else temp[i]+1
+            temp[i] = 0 if temp.get(i) == None else temp[i] + 1
 
-        for x,y in temp.items():
-            if y >= self.n //2:
+        for x, y in temp.items():
+            if y >= self.n // 2:
                 return f"Majority element is: {x}"
 
         return "No majority element"
@@ -40,7 +41,7 @@ class ArrayBasic:
         count = 1
 
         for i in range(self.n):
-            count = count+1 if self.arr[mj_index] == self.arr[i] else count-1
+            count = count + 1 if self.arr[mj_index] == self.arr[i] else count - 1
             if count == 0:
                 mj_index = i
                 count = 1
@@ -67,7 +68,7 @@ class ArrayBasic:
             else:
                 index = i
                 count = 1
-            
+
             if count > max_count:
                 max_count = count
                 max_index = arr[index]
@@ -76,6 +77,7 @@ class ArrayBasic:
             return f"Majority element is: {max_index}"
         else:
             return "No majority element"
+
 
 # Driver
 arr = [3, 3, 4, 2, 4, 4, 2, 4, 4]
