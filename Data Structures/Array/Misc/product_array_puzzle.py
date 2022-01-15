@@ -1,3 +1,5 @@
+import math
+
 # Product of array except itself
 """
     Given an array arr[] of n integers, construct a Product Array prod[] (of same size) such 
@@ -106,6 +108,16 @@ class ArrayBasic:
         
         return prod
 
+    def product_puzzle(self):
+        EPS = 1e-9
+        arr = self.arr.copy()
+        sum = 0
+        
+        for i in range(self.n):
+            sum += math.log10(arr[i])
+    
+        for i in range(self.n):
+            print(int(EPS + pow(10.00, sum - math.log10(arr[i]))), end=" ")
 
 # Driver
 arr = [10, 3, 5, 6, 2]
@@ -114,3 +126,5 @@ print(f"Prodduct array puzzle solution using division approach: {res.product_usi
 print(f"Prodduct array puzzle solution using extra space approach: {res.product_array_without_division()}")
 print("Prodduct array puzzle solution using less space" 
       f"approach: {res.product_array_without_division_and_less_space()}")
+print(f"Prodduct array puzzle without extra space and division approach: ")
+res.product_puzzle()
