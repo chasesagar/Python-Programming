@@ -25,6 +25,22 @@ class ArrayGame:
         """
         return self.minimum_jumps(self.arr, 0, self.n - 1)
 
+    def min_jumps_using_dynamic_programming(self):
+        arr = self.arr.copy()
+        n = self.n
+        jumps = [0 for i in range(n)]
+
+        if (n == 0) or (arr[0] == 0): return float('inf')
+
+        jumps[0] = 0
+        for i in range(1, n):
+            jumps[i] = float('inf')
+            for j in range(i):
+                if (i <= j + arr[j]) and (jumps[j] != float('inf')):
+                    jumps[i] = min(jumps[i], jumps[j] + 1)
+                    break
+        return jumps[n-1]
+
     @staticmethod
     def minimum_jumps(arr, low, high):
         # base condition
@@ -46,4 +62,4 @@ class ArrayGame:
 # Driver program to test above function
 arr = [1, 3, 6, 3, 2, 3, 6, 8, 9, 5]
 res = ArrayGame(arr, len(arr))
-print("Minimum number of jumps to reach, end is", res.minimum_jumps_to_reach_array_end_element())
+print("Minimum number of jumps to reach, end is", res.min_jumps_using_dynamic_programming())
