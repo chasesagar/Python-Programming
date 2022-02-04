@@ -8,6 +8,9 @@ Write a program to sort an array in wave form.
 """
 
 
+from pickletools import read_stringnl_noescape
+
+
 class Sort:
     def __init__(self, arr, n):
         self.arr = arr
@@ -29,8 +32,28 @@ class Sort:
 
         return arr
 
+    def sort_in_wave_optimized(self):
+        """
+        [A program to sort array in wave form using optimized comparing method]
+        Time Complexity: O(N)
+        Auxiliary Space: O(1)
+        Returns:
+            [list]: [wave form array list]
+        """
+        arr = self.arr.copy()
+
+        for i in range(0, self.n, 2):
+            if i > 0 and arr[i] < arr[i-1]:
+                arr[i], arr[i-1] = arr[i-1], arr[i]
+            
+            if i < self.n-1 and arr[i] < arr[i+1]:
+                arr[i], arr[i+1] = arr[i+1], arr[i]
+
+        return arr
+
 
 # Driver
 arr = [10, 5, 6, 3, 2, 20, 100, 80]
 sort = Sort(arr, len(arr))
 print(f"In wave form array: {sort.sort_in_wave()}")
+print(f"In wave form array: {sort.sort_in_wave_optimized()}")
