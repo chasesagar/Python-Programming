@@ -1,18 +1,20 @@
-#code
+# code
 def MergeSort(arr):
-    if(len(arr)>1):
-        mid = len(arr)//2 # double slash meand it give an integer value not float one.
+    if len(arr) > 1:
+        mid = len(arr) // 2  # double slash meany it give an integer value not float one.
         # creating sub lists
-        lefthalf = arr[:mid]    # creates an array called lefthalf containing elements before mid
-        righthalf = arr[mid:]   # creates an array containg elements after mid in arr and storr them in this array righthalf
-        # recusion call
+        lefthalf = arr[:mid]  # creates an array called lefthalf containing elements before mid
+        righthalf = arr[
+            mid:
+        ]  # creates an array contains elements after mid in arr and store them in this array righthalf
+        # recursion call
         MergeSort(lefthalf)
         MergeSort(righthalf)
 
-        i = j = k = 0 
+        i = j = k = 0
         # comparing and sorting lefthalf and righthalf
-        while(i<len(lefthalf) and j<len(righthalf)):
-            if (lefthalf[i]<righthalf[j]):
+        while i < len(lefthalf) and j < len(righthalf):
+            if lefthalf[i] < righthalf[j]:
                 arr[k] = lefthalf[i]
                 i = i + 1
             else:
@@ -29,11 +31,10 @@ def MergeSort(arr):
             j = j + 1
             k = k + 1
 
-        
 
-#driver
- 
-arr = [5,2,7,9,4,6,2,1,0]
+# driver
+
+arr = [5, 2, 7, 9, 4, 6, 2, 1, 0]
 MergeSort(arr)
-for i in range(0,len(arr)):
-    print(arr[i], end = " ")
+for i in range(0, len(arr)):
+    print(arr[i], end=" ")
