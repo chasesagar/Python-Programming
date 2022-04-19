@@ -54,7 +54,7 @@ class BubbleSort:
 
     def recursive_bubble_sort_second(self, arr):
         """
-        [Recursieve approach to sort array using bubble sort approach.]
+        [Recursive approach to sort array using bubble sort approach.]
         Time Complexity: O(N^2)
         Auxiliary space: O(1)
         Returns:
