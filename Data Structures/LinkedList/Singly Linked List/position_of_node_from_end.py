@@ -43,6 +43,42 @@ class LinkedList:
             temp = temp.next
         print(temp.data)
 
+    def length(self):
+        if self.head is None:
+            return 0
+        temp = self.head
+        count = 0
+        while(temp):
+            count += 1
+            temp= temp.next
+        
+        return count
+
+    def length_recursion(self, node, count=0):
+        if node is None:
+            return count
+
+        return self.length_recursion(node.next, count+1)
+
+
+    def nth_from_last_recursion(self, node, n, count = 0):
+        
+        if node is None:
+            return
+
+        if count == n:
+            return node.data
+
+        return self.nth_from_last_recursion(node.next, n, count + 1)
+
+
+    def print_nth_from_last_recursion(self, n):
+        len = self.length()
+        if n > len:
+            print(-1)
+            return 
+        print(self.nth_from_last_recursion(self.head, len-n))
+
 
 #driver
 if(__name__=="__main__"):
@@ -51,4 +87,6 @@ if(__name__=="__main__"):
     for i in values:
         list1.Push(i)
     list1.PrintList()
+    print(list1.length_recursion(list1.head))
     list1.PrintNthFromLast(2)
+    list1.print_nth_from_last_recursion(2)
